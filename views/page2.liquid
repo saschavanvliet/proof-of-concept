@@ -1,11 +1,15 @@
 {% render 'partials/head.liquid', title: 'cases' %}
 
-    <main>
+<main>
+    <section class="alle-projecten">
         <h1><strong>Projecten</strong> waar we trots op zijn</h1>
-    {% for case in cases2 %}
-        <h2>{{ case.title.rendered }}</h2>
-        <p>{{ case.content.rendered | strip_html | truncatewords: 32 }}</p>
-        <img src="{{ case.yoast_head_json.og_image[0].url }}" alt="{{ case.title.rendered }}" width="500">
-    {% endfor %}
-
+        {% for case in cases2 %}
+            <article class="projecten">
+                <h2>{{ case.title.rendered }}</h2>
+                <p>{{ case.content.rendered | strip_html | truncatewords: 32 }}</p>
+                <img src="{{ case.yoast_head_json.og_image[0].url }}" alt="{{ case.title.rendered }}" width="500">
+            </article>
+        {% endfor %}        
+    </section>
+</main>
 {% render 'partials/foot.liquid' %}
