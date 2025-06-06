@@ -1,0 +1,140 @@
+/* Fonts HindGuntur */
+
+@font-face {
+    font-family: 'HindGuntur';
+    src: url('/fonts/Hind_Guntur/HindGuntur-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'HindGuntur';
+    src: url('/fonts/Hind_Guntur/HindGuntur-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'HindGuntur';
+    src: url('/fonts/Hind_Guntur/HindGuntur-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'HindGuntur';
+    src: url('/fonts/Hind_Guntur/HindGuntur-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'HindGuntur';
+    src: url('/fonts/Hind_Guntur/HindGuntur-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Fonts Hind */
+
+@font-face {
+    font-family: 'Hind';
+    src: url('/fonts/Hind/Hind-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Hind';
+    src: url('/fonts/Hind/Hind-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Hind';
+    src: url('/fonts/Hind/Hind-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Hind';
+    src: url('/fonts/Hind/Hind-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Hind';
+    src: url('/fonts/Hind/Hind-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Custom property variabelen */
+:root {
+    --primary-font: 'HindGuntur', sans-serif;
+    --secondary-font: 'Hind', sans-serif;
+
+    --primary-background: #FFFFFF;
+    --secondary-background: #E6E6E6;
+    --primary-highlight: #E2655E;
+    --secondary-highlight: #281CE2;
+
+    --primary-text: #000000;
+    --secondary-text: #FFFFFF;
+    --third-text: #666666;
+}
+
+/* Stijlen pagina's */
+body {
+    font-family: var(--primary-font);
+    color: var(--primary-text);
+    font-weight: 300;
+}
+
+p, a, li, h1, h2, h3, h4, h5 {
+    font-weight: inherit;
+    color: inherit;
+    font-family: inherit;
+}
+
+/* Heading stijlen */
+h1 {
+    font-size: clamp(38px, 5vw, 45px);
+}
+h2 {
+    font-size: clamp(34px, 4.5vw, 40px);
+    line-height: 1.15;
+}
+h3 {
+    font-size: clamp(30px, 4vw, 35px);
+}
+h4 {
+    font-size: clamp(26px, 3.5vw, 30px);
+}
+h5 {
+    font-size: clamp(20px, 3vw, 25px);
+}
+
+/* Tekststijlen */
+p, a, li {
+    font-size: clamp(19px, 3vw, 25px);
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: underline;
+    text-decoration-color: var(--primary-highlight);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-highlight);
+}
