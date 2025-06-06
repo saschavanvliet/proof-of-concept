@@ -3,7 +3,7 @@
 <main>
     <section class="alle-projecten">
         <h1><strong>Projecten</strong> waar we trots op zijn</h1>
-        {% for case in cases1 %}
+        {% for case in cases %}
             <article class="projecten">
                 <h2>{{ case.title.rendered }}</h2>
                 <p>{{ case.content.rendered | strip_html | truncatewords: 32 }}</p>
@@ -11,7 +11,7 @@
             </article>
         {% endfor %}        
     </section>
-</main>
 
+</main>
 
 {% render 'partials/foot.liquid' %}
