@@ -32,7 +32,7 @@ app.get(['/cases', '/cases/page:page'], async (req, res) => {
         const response = await fetch(`${APIcases}&page=${page}`); // Door &page=${page} toe te voegen vraag je de juiste pagina van de paginering op. 
         const cases = await response.json();
         const totalPages = response.headers.get('X-WP-TotalPages');
-        
+
         res.render('cases.liquid', {
             cases,
             currentPage: Number(page),
@@ -45,6 +45,9 @@ app.get(['/cases', '/cases/page:page'], async (req, res) => {
     }
 });
 
+app.get('/contact', (req, res) => {
+  res.render('contact.liquid');
+});
 
 app.get('/404', (req, res) => {
   res.render('404.liquid');
