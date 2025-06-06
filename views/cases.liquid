@@ -12,6 +12,17 @@
         {% endfor %}        
     </section>
 
+    <nav class="paginering-cases">
+    <ol>
+        {% for pagina in (1..totalPages) %}
+        {% if pagina == currentPage %}
+            <li><strong>{{ pagina }}</strong></li> 
+        {% else %}
+            <li><a href="/cases/page{{ pagina }}">{{ pagina }}</a></li>
+        {% endif %}
+        {% endfor %}
+    </ol>
+    </nav>
 </main>
 
 {% render 'partials/foot.liquid' %}

@@ -17,26 +17,34 @@ app.set('views', './views');
 
 // const API = 'https://labelvier.nl/wp-json';
 
-const APIcases = 'https://labelvier.nl/wp-json/wp/v2/cases?per_page=8';
+const APIcases = 'https://labelvier.nl/wp-json/wp/v2/cases?per_page=8'; // Door 'cases?per_page=8' in de URL toe te voegen worden er per pagina steeds maar acht projecten geladen opeenvolgend.
 
 app.get('/', async function (request, response) {
     response.render('index.liquid', {
   });
 });
 
+// Twee routes worden aangemaakt met de onderstaande regel. :page is de routeparameter voor de verschillende pagina's.
 app.get(['/cases', '/cases/page:page'], async (req, res) => {
     let page = req.params.page || 1;
 
     try {
-        const response = await fetch(`${APIcases}&page=${page}`);
+        const response = await fetch(`${APIcases}&page=${page}`); // Door &page=${page} toe te voegen vraag je de juiste pagina van de paginering op. 
         const cases = await response.json();
+        const totalPages = response.headers.get('X-WP-TotalPages');
+        
+        res.render('cases.liquid', {
+            cases,
+            currentPage: Number(page),
+            totalPages: Number(totalPages)
+        });
 
-        res.render('cases.liquid', { cases });
     } catch (error) {
         console.error(error);
         res.status(500).send('Fout bij het ophalen van data.');
     }
 });
+
 
 app.get('/404', (req, res) => {
   res.render('404.liquid');
