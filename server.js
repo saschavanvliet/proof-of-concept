@@ -38,6 +38,14 @@ app.get(['/cases', '/cases/page:page'], async (req, res) => {
     }
 });
 
+app.get('/404', (req, res) => {
+  res.render('404.liquid');
+});
+
+app.use((req, res) => {
+  res.status(404).render('404.liquid');
+});
+
 // Port live zetten 
 app.set('port', process.env.PORT || 8888);
 app.listen(app.get('port'), () => {
