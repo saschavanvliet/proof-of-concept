@@ -1,0 +1,11 @@
+{% render 'partials/head.liquid', title: 'cases' %}
+
+    <main>
+        <h1><strong>Projecten</strong> waar we trots op zijn</h1>
+    {% for case in cases3 %}
+        <h2>{{ case.title.rendered }}</h2>
+        <p>{{ case.content.rendered | strip_html | truncatewords: 32 }}</p>
+        <img src="{{ case.yoast_head_json.og_image[0].url }}" alt="{{ case.title.rendered }}" width="500">
+    {% endfor %}
+
+{% render 'partials/foot.liquid' %}
