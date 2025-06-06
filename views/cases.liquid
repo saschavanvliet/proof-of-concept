@@ -14,7 +14,7 @@
 
     <nav class="paginering-cases">
     <ol>
-        {% for pagina in (1..totalPages) %}
+        {% for pagina in (1..totalPages) %}  {% comment %} Dit is een loop dat loopt van pagina 1 tot het oneindig aantal pagina's die je hebt. Deze pagina's worden in de server 'aangemaakt' door te filteren in de database. {% endcomment %}
         {% if pagina == currentPage %}
             <li><strong>{{ pagina }}</strong></li> 
         {% else %}
