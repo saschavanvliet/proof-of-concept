@@ -45,12 +45,13 @@ app.get(['/cases', '/cases/page:page'], async (req, res) => {
     }
 });
 
-app.get('/cases/case/:id', async function (request, response) {
-  const id = request.params.id;
+app.get('/cases/case/:idSlug', async function (request, response) {
+  const idSlug = request.params.idSlug;
+  const id = idSlug.split('-')[0]; 
 
   try {
     // 1. Haal case-data op
-    const caseResponse = await fetch(`${API}/wp/v2/cases/${id}`);
+    const caseResponse = await fetch(API + '/wp/v2/cases/${id}');
     const caseData = await caseResponse.json();
 
     // 2. Pak de projectleider en teamleden IDs
