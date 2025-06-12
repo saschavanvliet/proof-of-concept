@@ -15,6 +15,7 @@ const engine = new Liquid();
 app.engine('liquid', engine.express());
 app.set('views', './views');
 
+// Algemene variabelen:
 const API = 'https://labelvier.nl/wp-json';
 
 const APIcases = (API + '/wp/v2/cases?per_page=8'); // Door 'cases?per_page=8' in de URL toe te voegen worden er per pagina steeds maar acht projecten geladen opeenvolgend.
@@ -24,78 +25,70 @@ app.get('/', async function (request, response) {
   });
 });
 
-// Twee routes worden aangemaakt met de onderstaande regel. :page is de routeparameter voor de verschillende pagina's.
-app.get(['/cases', '/cases/page:page'], async (req, res) => {
-    let page = req.params.page || 1;
+// MAIN PAGE: overzichtspagina alle cases
+app.get(['/cases', '/cases/page:page'], async function (request, response) {
+  // De standaardpagina is 1. Dit is dus de eerste pagina die geladen wordt. Er worden acht cases per pagina geladen en dit zijn de 'APIcases'.
+  const page = request.params.page || 1;
 
-    try {
-        const response = await fetch(`${APIcases}&page=${page}`); // Door &page=${page} toe te voegen vraag je de juiste pagina van de paginering op. 
-        const cases = await response.json();
-        const totalPages = response.headers.get('X-WP-TotalPages');
+  // Maak de URL met de bijbehorende pagina. De variabele 'page' wordt dus toegevoegd aan de 'APIcases' door gebruik te maken van '&page='. Hiermee wordt er dus een stukje extra parameter toegevoegd aan de URL.
+  const pagesResponse = await fetch(APIcases + '&page=' + page);
+  const pagesResponseJSON = await pagesResponse.json();
 
-        res.render('cases.liquid', {
-            cases,
-            currentPage: Number(page),
-            totalPages: Number(totalPages)
-        });
+  // Dit is het totaal aantal pagina's:
+  const totalPages = pagesResponse.headers.get('X-WP-TotalPages');
 
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Fout bij het ophalen van data.');
-    }
+  // De pagina wordt gerenderd op 'cases' want er hoeft geen extra liquid template aangemaakt te worden voor elke nieuwe pagina die zou worden toegevoegd.
+    response.render('cases.liquid', {
+      cases: pagesResponseJSON,
+      currentPage: Number(page),
+      totalPages: Number(totalPages)
+    });
 });
 
-app.get('/cases/case/:idSlug', async function (request, response) {
-  const idSlug = request.params.idSlug;
-  const id = idSlug.split('-')[0]; 
+// DETAILPAGE case
+app.get('/cases/case/:slug', async function (request, response) {
+  const slug = request.params.slug; // Parameter voor de slug van de desbetreffende case wordt aangemaakt door deze variabele.
 
-  try {
-    // 1. Haal case-data op
-    const caseResponse = await fetch(API + '/wp/v2/cases/${id}');
-    const caseData = await caseResponse.json();
+  // De URL van de case met de slug erbij wordt met caseResponse aangemaakt:
+  const caseResponse = await fetch(API + '/wp/v2/cases?slug=' + slug);
+  const caseResponseJSON = await caseResponse.json();
 
-    // 2. Pak de projectleider en teamleden IDs
-    const projectleiderId = caseData.acf.case_projectleider;
-    const teamIds = caseData.acf.case_team || [];
+  const caseData = caseResponseJSON[0]; // De eerste lijst uit de array wordt gepakt (eerste case opbject)
+  
+  // Personen uit 'cases' JSON-bestand. Deze mensen moeten worden gekoppeld aan het 'users' JSON-bestand. Dus in het ene bestand staat er wie er hebben gewerkt aan een case en in het andere staat inhoudelijk wie het is.
+  // Er is een onderverdeling van projectleiders en teams (mensen in een team dus).
+  const projectleiderId = caseData.acf.case_projectleider; 
+  const teamIds = caseData.acf.case_team || []; // <- Haakjes: Als er niemand in een team zit, laat dan een lege lijst zien. Anders krijg je moeilijkheden met de for-loop, omdat er undefined zou staan.
+  const allUserIds = [...new Set([projectleiderId, ...teamIds].filter(Boolean))]; // Er wordt EEN array gemaakt van alle projectleiders en teamleden. Bijvoorbeeld: [4, 5, 6]. Het Boolean-filter zorgt ervoor dat er geen lege waardes komen te staan, maar alleen echte id's. New Set zorgt ervoor dat er geen dubbele id's zijn.
 
-    // 3. Maak lijst met alle user IDs om op te halen
-    const allUserIds = [...new Set([projectleiderId, ...teamIds].filter(Boolean))];
-
-    let usersData = [];
-    if (allUserIds.length > 0) {
-      // 4. Haal alleen de benodigde users op
-      const userIdsParam = allUserIds.join(',');
-      const usersResponse = await fetch(`${API}/wp/v2/users?include=${userIdsParam}`);
-      usersData = await usersResponse.json();
+    let usersData = []; // veranderende variabele
+    if (allUserIds.length > 0) { // Als er niks in de 'allUserIds' zit wordt er ook geen API-aanroep gedaan.
+      const userIdsParam = allUserIds.join(','); // Met 'join' wordt er een string gemaakt van de array. [4, 7, 12] naar "4,7,12" bijv.
+      const usersResponse = await fetch(API + '/wp/v2/users?include=' + userIdsParam); // Alleen de gebruikers die we aanroepen worden in de URL gezet. Met dus de juiste parameter van de UserId's.
+      usersData = await usersResponse.json(); // Alle data wordt opgeslagen in de lege variabele.
     }
 
-    // 5. Splits projectleider en teamleden
-    const projectleider = usersData.find(user => user.id === projectleiderId);
-    const teamleden = usersData.filter(user => teamIds.includes(user.id));
+    const projectleider = usersData.find(user => user.id === projectleiderId); // In de UsersData (de lijst met alle variabelen uit de User-JSON) moeten de getallen (id's) overeenkomen met de id's uit de cases-JSON.
+    const teamleden = usersData.filter(user => teamIds.includes(user.id)); // Alleen de gebruikers die in het team zitten worden geladen.
 
-    // 6. Render met gesplitste data
-    response.render('detail.liquid', {
+    response.render('detail.liquid', { // Er wordt een losse detailpage aangemaakt waarbij alle informatie van een specifieke case wordt geladen. Aan de hand van de gemaakte variabelen kunnen ook alle teamleden en projectleiders worden geladen.
       case: caseData,
       projectleider,
       teamleden
     });
-
-  } catch (error) {
-    console.error(error);
-    response.status(500).send('Fout bij het ophalen van de case detailpagina.');
-  }
 });
 
-app.get('/contact', (req, res) => {
-  res.render('contact.liquid');
+app.get('/contact', (request, response) => {
+  response.render('contact.liquid');
 });
 
-app.get('/404', (req, res) => {
-  res.render('404.liquid');
+// 404 pagina live zetten
+app.get('/404', (request, response) => {
+  response.render('404.liquid');
 });
 
-app.use((req, res) => {
-  res.status(404).render('404.liquid');
+app.use((request, response) => {
+  response.status(404).render('404.liquid');
 });
 
 // Port live zetten 
