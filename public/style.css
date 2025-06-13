@@ -1,0 +1,108 @@
+/* ALGEMENE STYLING GEHELE PAGINA */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* STYLING ALLE CASES */
+/* Section van alle cases bij elkaar zonder h1. Dus niet per article. */
+.section-all-cases {
+    padding: 2em 2em 0 2em;
+    @media (min-width: 770px) { /* Groter dan mobiel */
+       padding: 4em 4em 0 4em;
+    }
+    @media (min-width: 950px) {  /* Tablet: Relatief snel een nieuw breakingpoint toegevoegd, maar anders was er te veel padding rond dit punt. */
+        padding: 4em 6em 0 6em;
+    }
+    @media (min-width: 1300px) { /* Desktop */
+       padding: 4em 13em 0 13em;
+    }
+}
+
+.section-all-cases h1 {
+    line-height: 1.15;
+}
+
+/* Styling images */
+.img-case {
+    width: 100%;
+    overflow: hidden;
+}
+  
+.img-case img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    aspect-ratio: 1;
+    @media (min-width: 1300px) { /* Desktop */
+        max-height: 470px;
+    }
+}
+
+/* Layout styling met grid */
+.container-cases {
+    margin-top: 2em;
+}
+
+.grid-cases {
+    display: grid;
+}
+  
+@media (min-width: 750px) {
+    .grid-cases {
+      grid-template-columns: 1fr 1fr;
+    }
+    .article-case:nth-of-type(even) a > figure {
+      order: 1;
+    }
+    .article-case:nth-of-type(even) a > section {
+        padding: 2em 2em 2em 0;
+    }
+    .article-case:nth-of-type(odd) a > section {
+        padding: 2em 0 2em 2em;
+    }
+    .img-case {
+        max-height: 100%;
+    }
+    .text-case {
+        max-height: auto;
+    }
+}
+
+/* Alle text binnen een case. */
+.text-case {
+    padding: 2em 0 2em 0;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.text-case h2 {
+    line-height: 1.15;
+}
+
+.text-case p {
+    line-height: 1.5;
+    margin: 1em 0 1em 0;
+    font-size: var(--font-size-normal-text);
+}
+
+@media (min-width: 1000px) {  /* Bij een ander breaking-point gaat de text helaas onder de onderstaande image */
+p, a, li {
+    font-size: clamp(20px, 3vw, 25px);
+}} 
+
+/* Lees verder-knop */
+.lees-verder-case {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    min-height: initial;
+    line-height: 1;
+    font-weight: bold;
+    font-size: var(--font-size-small-button);
+}
