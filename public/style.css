@@ -116,7 +116,14 @@ body {
   max-width: 800px;
   margin: 0 auto;
   padding: 2em;
-  text-align: center; 
+}
+
+.section-detail-content p {
+    font-size: var(--font-size-small-button);
+}
+
+.section-detail-content h2 {
+    font-size: 30px; /* NOG EVEN DYNAMISCH MAKEN */
 }
 
 .section-detail-content a {
@@ -124,10 +131,27 @@ body {
 }
 
 .section-detail-content img {
-    width: 800px;
     height: auto;
 }
 
+.section-detail-content {
+    font-family: var(--font-paragraph);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    padding: 0em 2em 0em;
+}
+
+.section-detail-content img, video, iframe {
+    width: 100%;
+    height: auto;
+}
+
+/* Video kunnen stylen. De originele style uit de JSON wordt overwritten met het nieuwe stuk code. */
+div[style="width: 61rem; margin: 0 auto;"] {
+    width: 100% !important;
+    margin: 0 !important;
+}
 
 /* ======================= 404-PAGINA ======================= */
 .image-errorpage img {
