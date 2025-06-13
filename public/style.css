@@ -1,4 +1,4 @@
-/* ALGEMENE STYLING GEHELE PAGINA */
+/* ======================= ALGEMENE STYLING GEHELE PAGINA ========================= */
 * {
     margin: 0;
     padding: 0;
@@ -10,7 +10,7 @@ body {
 }
 
 
-/* STYLING ALLE CASES */
+/* ======================= STYLING OVERZICHTSPAGINA CASES =========================== */
 /* Section van alle cases bij elkaar zonder h1. Dus niet per article. */
 .section-all-cases {
     padding: 2em 2em 0 2em;
@@ -111,7 +111,25 @@ body {
     font-size: var(--font-size-small-button);
 }
 
-/* 404-PAGINA */
+/* ======================= DETAILPAGE CASE ========================= */
+.section-detail-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2em;
+  text-align: center; 
+}
+
+.section-detail-content a {
+    color: var(--primary-highlight);
+}
+
+.section-detail-content img {
+    width: 800px;
+    height: auto;
+}
+
+
+/* ======================= 404-PAGINA ======================= */
 .image-errorpage img {
   width: 100%;
   height: auto;
