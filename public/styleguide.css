@@ -87,6 +87,9 @@
     --primary-text: #000000;
     --secondary-text: #FFFFFF;
     --third-text: #666666;
+
+    --font-size-normal-text: 19px;
+    --font-size-small-button: 18px;
 }
 
 /* Stijlen pagina's */
@@ -94,6 +97,11 @@ body {
     font-family: var(--primary-font);
     color: var(--primary-text);
     font-weight: 300;
+}
+
+p {
+    text-box: trim-both cap alphabetic;
+    line-height: 1.5;
 }
 
 p, a, li, h1, h2, h3, h4, h5 {
@@ -120,19 +128,11 @@ h5 {
     font-size: clamp(20px, 3vw, 25px);
 }
 
-/* Tekststijlen */
-p, a, li {
-    font-size: clamp(19px, 3vw, 25px);
-}
-
-li {
-    list-style: none;
-}
-
 a {
-    text-decoration: underline;
-    text-decoration-color: var(--primary-highlight);
+    /* text-decoration: underline; */
+    /* text-decoration-color: var(--primary-highlight); */
     transition: color 0.3s ease;
+    text-decoration: none;
 }
 
 a:hover {
