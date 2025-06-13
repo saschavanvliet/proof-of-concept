@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+body {
+  overflow-x: hidden;
+}
+
+
 /* STYLING ALLE CASES */
 /* Section van alle cases bij elkaar zonder h1. Dus niet per article. */
 .section-all-cases {
@@ -89,12 +94,11 @@
     line-height: 1.5;
     margin: 1em 0 1em 0;
     font-size: var(--font-size-normal-text);
-}
-
-@media (min-width: 1000px) {  /* Bij een ander breaking-point gaat de text helaas onder de onderstaande image */
-p, a, li {
+    @media (min-width: 1000px) {  /* Bij een ander breaking-point gaat de text helaas onder de onderstaande image */
+    p, a, li {
     font-size: clamp(20px, 3vw, 25px);
-}} 
+    }} 
+}
 
 /* Lees verder-knop */
 .lees-verder-case {
@@ -106,3 +110,56 @@ p, a, li {
     font-weight: bold;
     font-size: var(--font-size-small-button);
 }
+
+/* 404-PAGINA */
+.image-errorpage img {
+  width: 100%;
+  max-width: 500px; 
+  height: auto;
+}
+
+.main-errorpage {
+    flex-direction: column; 
+    text-align: center;
+    padding-bottom: 3em;
+    padding-top: 3em;
+}
+
+.image-errorpage {
+    margin-top: 2em;
+}
+
+.text-errorpage a {
+    text-decoration: underline; 
+}
+
+@media (min-width: 768px) {
+.text-errorpage {
+  order: 2;
+}
+.image-errorpage {
+  order: 1;
+}
+.main-errorpage {
+  display: flex;
+  flex-direction: row; 
+  align-items: center; 
+  justify-content: center;
+}
+.image-errorpage img, .text-errorpage img {
+  max-width: 100%;
+  height: auto;
+}
+.text-errorpage {
+  flex-basis: 60%;
+}
+.image-errorpage {
+  flex-basis: 40%;
+}
+.image-errorpage img {
+    height: 850px;
+    width: 100%;
+    object-fit: cover;
+    display: block; 
+}}
+
