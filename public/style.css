@@ -111,6 +111,50 @@ body {
     font-size: var(--font-size-small-button);
 }
 
+/* Paginering */
+.nav-pages-cases ol {
+  list-style: none;       
+  padding-top: 5em;
+  display: flex;      
+  gap: 8px;  
+  padding-left: 2em;
+  @media (min-width: 770px) {
+    padding-left: 4em;
+    }
+  @media (min-width: 950px) {  
+    padding-left: 6em;
+    }
+  @media (min-width: 1300px){
+    padding-left: 13em;
+    }       
+}
+
+.nav-pages-cases li {
+  margin: 0;
+}
+
+.nav-pages-cases a {
+  display: inline-block;
+  background-color: var(--primary-highlight);      
+  color: white;            
+  padding: 16px 32px;          
+  text-decoration: none;       
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.nav-pages-cases a:hover {
+  background-color: var(--primary-highlight);   
+}
+
+.nav-pages-cases strong {
+  background-color: var(--secondary-highlight); 
+  color: white;
+  padding: 16px 32px;
+  font-weight: 700;
+  display: inline-block;
+}
+
 /* ======================= DETAILPAGE CASE ========================= */
 .section-detail-image, .section-detail-header h1, .detail-leestijd, .section-detail-users {
     display: flex;
