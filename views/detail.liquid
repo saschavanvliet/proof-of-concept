@@ -1,7 +1,8 @@
 {% render 'partials/head.liquid', title: 'cases detail' %}
 
 <main class="main-detail">
-{% comment %} Breadcrumb {% endcomment %}
+
+  {% comment %} Breadcrumb {% endcomment %}
   <nav class="nav-breadcrumbs" aria-label="Breadcrumb">
     <ol class="list-breadcrumbs">
       <li>
@@ -20,17 +21,11 @@
     </ol>
   </nav>
 
-{% comment %} Case afbeelding {% endcomment %}
   <section class="section-detail-image">
-    <img
-      src="{{ case.yoast_head_json.og_image[0].url }}"
-      alt="{{ case.title.rendered }}"
-      width="450"
-      height="400"
-    >
+    <img src="{{ case.yoast_head_json.og_image[0].url }}" alt="{{ case.title.rendered }}" width="800" height="auto">
   </section>
 
-{% comment %} Leestijd etcetera {% endcomment %}
+  <!-- Leestijd etc. -->
   <section class="section-detail-header">
     <h1>{{ case.title.rendered }}</h1>
     <div class="detail-leestijd">
@@ -46,22 +41,20 @@
     </div>
   </section>
 
-{% comment %} Projectleider {% endcomment %}
-  <section class="section-detail-users">
-    <div class="author-card">
-      <a href="#">
-        <img src="{{ projectleider.avatar_urls.96 }}" alt="{{ projectleider.name }}" />
-      </a>
-      <div>
-        <h3>{{ projectleider.acf.user_data.profile_title }}</h3>
-        <p>{{ projectleider.acf.user_data.role }}</p>
-      </div>
-    </div>
-  </section>
-
-{% comment %} Teamleden {% endcomment %}
   <section class="section-detail-users">
     <div class="container-users">
+      {% comment %} Projectleider {% endcomment %}
+      <div class="detail-user-card">
+        <a href="#">
+          <img src="{{ projectleider.avatar_urls.96 }}" alt="{{ projectleider.name }}" />
+        </a>
+        <div>
+          <h3>{{ projectleider.acf.user_data.profile_title }}</h3>
+          <p>{{ projectleider.acf.user_data.role }}</p>
+        </div>
+      </div>
+
+      {% comment %} Teamleden {% endcomment %}
       {% for user in teamleden %}
         <div class="detail-user-card">
           <a href="#">
@@ -73,15 +66,18 @@
           </div>
         </div>
       {% endfor %}
+
     </div>
   </section>
 
-{% comment %} Case inhoud {% endcomment %}
+
+
+  {% comment %} Case inhoud {% endcomment %}
   <section class="section-detail-content">
     <p>{{ case.content.rendered }}</p>
   </section>
 
-{% comment %} Contact opnemen met de projectleider {% endcomment %}
+  {% comment %} Contact opnemen met de projectleider {% endcomment %}
   <section class="section-detail-meerweten">
     <p>Meer weten over dit project? Neem contact op met de projectleider:</p>
     <div class="contactpersoon">
@@ -97,7 +93,7 @@
     </div>
   </section>
 
-{% comment %} Op social media delen {% endcomment %}
+  {% comment %} Op social media delen {% endcomment %}
   <section class="section-detail-delen">
     <h3><strong>Deel</strong> dit blogbericht via</h3>
     <ul class="detail-socials">
@@ -123,6 +119,7 @@
       </li>
     </ul>
   </section>
+
 </main>
 
 {% render 'partials/foot.liquid' %}
