@@ -248,7 +248,7 @@ section.section-detail-image img{
 }
 
 .section-detail-content img, video, iframe {
-    width: 100%;
+    width: 800px;
     height: auto;
 }
 
