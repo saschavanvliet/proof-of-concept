@@ -1,41 +1,42 @@
 {% render 'partials/head.liquid', title: 'cases' %}
 
 <main class="main-cases">
+
+{% comment %} Heel stuk van alle cases samen inclusief h1 {% endcomment %}
     <section class="section-all-cases">
       <h1><strong>Projecten</strong> waar we trots op zijn!</h1>
-    
+
+      {% comment %} Cases zonder heading {% endcomment %}
         <section class="container-cases">
             {% for case in cases %}
             <article class="article-case">
-                <a href="/cases/case/{{ case.slug }}" class="grid-cases">
-                <figure class="img-case">
-                    <img alt="{{ case.title.rendered }}" src="{{ case.yoast_head_json.og_image[0].url }}">
-                </figure>
-
-                <section class="text-case"> 
-                    <h2><span>{{ case.title.rendered }}</span></h2>
-                    <p>{{ case.content.rendered | strip_html | truncatewords: 30 }}</p>
-                    <span class="lees-verder-case">lees verder<alt="Verderlezen" width="15" height="15"></span>
-                </section>
+                <a href="/cases/case/{{ case.slug }}" class="grid-cases" alt="{{ case.slug }}">
+                    <figure class="img-case">
+                        <img src="{{ case.yoast_head_json.og_image[0].url }}" alt="{{ case.title.rendered }}">
+                    </figure>
+                    <div class="section-case-text"> 
+                        <h2><span>{{ case.title.rendered }}</span></h2>
+                        <p>{{ case.content.rendered | strip_html | truncatewords: 30 }}</p>
+                        <span class="lees-verder-case">lees verder<alt="Verderlezen" width="15" height="15"></span>
+                    </div>
                 </a>
             </article>
             {% endfor %}
         </section>
-
     </section>
 
-
-    <nav class="nav-pages-cases">
-    <ol>
-        {% for pagina in (1..totalPages) %}  {% comment %} Dit is een loop dat loopt van pagina 1 tot het oneindig aantal pagina's die je hebt. Deze pagina's worden in de server 'aangemaakt' door te filteren in de database. {% endcomment %}
-        {% if pagina == currentPage %}
-            <li><strong>{{ pagina }}</strong></li> 
-        {% else %}
-            <li><a href="/cases/page{{ pagina }}">{{ pagina }}</a></li>
-        {% endif %}
-        {% endfor %}
-    </ol>
+    <nav class="nav-cases-pages">
+        <ol>
+            {% for pagina in (1..totalPages) %}  {% comment %} Dit is een loop dat loopt van pagina 1 tot het oneindig aantal pagina's die je hebt. Deze pagina's worden in de server 'aangemaakt' door te filteren in de database. {% endcomment %}
+                {% if pagina == currentPage %}
+                    <li><strong>{{ pagina }}</strong></li> 
+                {% else %}
+                    <li><a href="/cases/page{{ pagina }}" alt="{{ pagina }}">{{ pagina }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ol>
     </nav>
+
 </main>
 
 {% render 'partials/foot.liquid' %}

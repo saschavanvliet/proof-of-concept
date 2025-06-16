@@ -3,71 +3,49 @@
 <main class="main-detail">
 
   {% comment %} Breadcrumb {% endcomment %}
-  <nav class="nav-breadcrumbs" aria-label="Breadcrumb">
-    <ol class="list-breadcrumbs">
-      <li>
-        <a href="/">
-          {{ case.yoast_head_json.schema["@graph"][2].itemListElement[0].name }}
-        </a>
-      </li>
-      <li>
-        <a href="/cases">
-          {{ case.yoast_head_json.schema["@graph"][2].itemListElement[1].name }}
-        </a>
-      </li>
-      <li aria-current="page">
-        {{ case.yoast_head_json.schema["@graph"][2].itemListElement[2].name }}
-      </li>
+  <nav class="nav-detail-breadcrumbs" aria-label="Breadcrumb">
+    <ol class="list-detail-breadcrumbs">
+      <li><a href="/">{{ case.yoast_head_json.schema["@graph"][2].itemListElement[0].name }}</a></li>
+      <li><a href="/cases">{{ case.yoast_head_json.schema["@graph"][2].itemListElement[1].name }}</a></li>
+      <li aria-current="page">{{ case.yoast_head_json.schema["@graph"][2].itemListElement[2].name }}</li>
     </ol>
   </nav>
-
+  
+  {% comment %} Image van het project waar op geklikt is {% endcomment %}
   <section class="section-detail-image">
     <img src="{{ case.yoast_head_json.og_image[0].url }}" alt="{{ case.title.rendered }}" width="800" height="auto">
   </section>
 
   <!-- Leestijd etc. -->
-  <section class="section-detail-header">
+  <section class="section-detail-titels">
     <h1>{{ case.title.rendered }}</h1>
     <div class="detail-leestijd">
-      <a href="#">Website</a>
-      <a href="#">
-        <img src="" alt="" width="15" height="15" />
-        Leestijd {{ case.yoast_head_json.twitter_misc["Geschatte leestijd"] }}
-      </a>
-      <a href="#">
-        <img src="/img/calendar-days-svgrepo-com.svg" alt="" width="15" height="15" />
-        {{ case.date_gmt | date: "%-d %m %Y" }}
-      </a>
+      <a href="https://labelvier.nl/blog/onderwerp/soort-product/website/">Website</a>
+      <img src="" alt="" width="15" height="15"/>Leestijd {{ case.yoast_head_json.twitter_misc["Geschatte leestijd"] }}
+      <img src="/img/calendar-days-svgrepo-com.svg" alt="" width="15" height="15" />{{ case.date_gmt | date: "%-d %m %Y" }}
     </div>
   </section>
 
-  <section class="section-detail-users">
-    <div class="container-users">
-      {% comment %} Projectleider {% endcomment %}
+  <section class="container-users">
+    {% comment %} Projectleider {% endcomment %}
+    <div class="detail-user-card">
+      <img src="{{ projectleider.avatar_urls.96 }}" alt="{{ projectleider.name }}"/>
+      <div>
+        <h3>{{ projectleider.acf.user_data.profile_title }}</h3>
+        <p>{{ projectleider.acf.user_data.role }}</p>
+      </div>
+    </div>
+
+    {% comment %} Teamleden {% endcomment %}
+    {% for user in teamleden %}
       <div class="detail-user-card">
-        <a href="#">
-          <img src="{{ projectleider.avatar_urls.96 }}" alt="{{ projectleider.name }}" />
-        </a>
+        <img src="{{ user.avatar_urls.96 }}" alt="{{ user.name }}" />
         <div>
-          <h3>{{ projectleider.acf.user_data.profile_title }}</h3>
-          <p>{{ projectleider.acf.user_data.role }}</p>
+          <h3>{{ user.acf.user_data.profile_title }}</h3>
+          <p>{{ user.acf.user_data.role }}</p>
         </div>
       </div>
-
-      {% comment %} Teamleden {% endcomment %}
-      {% for user in teamleden %}
-        <div class="detail-user-card">
-          <a href="#">
-            <img src="{{ user.avatar_urls.96 }}" alt="{{ user.name }}" />
-          </a>
-          <div>
-            <h3>{{ user.acf.user_data.profile_title }}</h3>
-            <p>{{ user.acf.user_data.role }}</p>
-          </div>
-        </div>
-      {% endfor %}
-
-    </div>
+    {% endfor %}
   </section>
 
   {% comment %} Case alle inhoud inclusief foto's etc (onderste gedeelte) {% endcomment %}
@@ -95,26 +73,10 @@
   <section class="section-detail-delen">
     <h3><strong>Deel</strong> dit blogbericht via</h3>
     <ul class="detail-socials">
-      <li>
-        <a href="https://twitter.com/intent/tweet?text={{ case.title.rendered | url_encode }}&url={{ case.link | url_encode }}&via=LabelVier" target="_blank" rel="noopener noreferrer">
-          <img src="" alt="Deel op Twitter" width="15" height="15"/>
-        </a>
-      </li>
-      <li>
-        <a href="https://www.facebook.com/sharer/sharer.php?u={{ case.link | url_encode }}" target="_blank" rel="noopener noreferrer">
-          <img src="" alt="Deel op Facebook" width="15" height="15"/>
-        </a>
-      </li>
-      <li>
-        <a href="https://wa.me/?text={{ case.title.rendered | url_encode }}%20{{ case.link | url_encode }}" target="_blank" rel="noopener noreferrer">
-          <img src="" alt="Deel via WhatsApp" width="15" height="15"/>
-        </a>
-      </li>
-      <li>
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ case.link | url_encode }}&title={{ case.title.rendered | url_encode }}" target="_blank" rel="noopener noreferrer">
-          <img src="" alt="Deel op LinkedIn" width="15" height="15"/>
-        </a>
-      </li>
+      <li><a href="https://twitter.com/intent/tweet?text={{ case.title.rendered | url_encode }}&url={{ case.link | url_encode }}&via=LabelVier" target="_blank" rel="noopener noreferrer"><img src="" alt="Deel op Twitter" width="15" height="15"/></a></li>
+      <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ case.link | url_encode }}" target="_blank" rel="noopener noreferrer"><img src="" alt="Deel op Facebook" width="15" height="15"/></a></li>
+      <li><a href="https://wa.me/?text={{ case.title.rendered | url_encode }}%20{{ case.link | url_encode }}" target="_blank" rel="noopener noreferrer"><img src="" alt="Deel via WhatsApp" width="15" height="15"/></a></li>
+      <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ case.link | url_encode }}&title={{ case.title.rendered | url_encode }}" target="_blank" rel="noopener noreferrer"><img src="" alt="Deel op LinkedIn" width="15" height="15"/></a></li>
     </ul>
   </section>
 
