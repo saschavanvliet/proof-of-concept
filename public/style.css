@@ -166,15 +166,13 @@ body {
     padding-right: 2em;
 }
 
-section.section-detail-image img{
+section.section-detail-image img {
     height: 500px;
     width: 80%;
     object-fit: cover;
     display: block;
     padding-bottom: 2em;
     padding-top: 2em;
-    @media (min-width: 1200px) {
-    }
 }
 
 .section-detail-header h1 {
@@ -201,7 +199,7 @@ section.section-detail-image img{
     min-width: 240px;
     flex: 0 0 auto;
     scroll-snap-align: start;
-    background-color: #f9f9f9;
+    background: #f9f9f9;
     border-radius: 8px;
     padding: 1em;
     text-align: center;
@@ -221,6 +219,16 @@ section.section-detail-image img{
     margin: 0 auto;
     padding: 2em;
     justify-content: center; 
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    padding: 0em 2em 0em;
+}
+
+.section-detail-content img, video, iframe {
+    width: 100%;
+    display: flex;
+    height: auto;
 }
 
 .section-detail-content p {
@@ -233,23 +241,6 @@ section.section-detail-image img{
 
 .section-detail-content a {
     color: var(--primary-highlight);
-}
-
-.section-detail-content img {
-    height: auto;
-}
-
-.section-detail-content {
-    font-family: var(--font-paragraph);
-    display: flex;
-    flex-direction: column;
-    gap: 1.5em;
-    padding: 0em 2em 0em;
-}
-
-.section-detail-content img, video, iframe {
-    width: 800px;
-    height: auto;
 }
 
 /* Video kunnen stylen. De originele style uit de JSON wordt overwritten met het nieuwe stuk code. */
@@ -308,4 +299,3 @@ div[style="width: 61rem; margin: 0 auto;"] {
     object-fit: cover;
     display: block; 
 }}
-
