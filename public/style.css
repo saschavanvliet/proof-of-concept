@@ -9,7 +9,6 @@ body {
   overflow-x: hidden;
 }
 
-
 /* ======================= STYLING OVERZICHTSPAGINA CASES =========================== */
 /* Section van alle cases bij elkaar zonder h1. Dus niet per article. */
 .section-all-cases {
@@ -23,26 +22,24 @@ body {
     @media (min-width: 1300px) { /* Desktop */
        padding: 4em 13em 0 13em;
     }
-}
-
-.section-all-cases h1 {
+    h1 {
     line-height: 1.15;
+    }
 }
 
 /* Styling images */
 .img-case {
     width: 100%;
     overflow: hidden;
-}
-  
-.img-case img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    aspect-ratio: 1;
-    @media (min-width: 1300px) { /* Desktop */
-        max-height: 470px;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        aspect-ratio: 1;
+        @media (min-width: 1300px) { /* Desktop */
+            max-height: 470px;
+        }
     }
 }
 
@@ -53,12 +50,13 @@ body {
 
 .grid-cases {
     display: grid;
+    @media (min-width: 750px) {
+        grid-template-columns: 1fr 1fr;
+    }
 }
   
+/* Bij een media query van minimaal 750px verandert de layout zodat de sections niet meer vlak onder elkaar staan. */
 @media (min-width: 750px) {
-    .grid-cases {
-      grid-template-columns: 1fr 1fr;
-    }
     .article-case:nth-of-type(even) a > figure {
       order: 1;
     }
@@ -71,33 +69,31 @@ body {
     .img-case {
         max-height: 100%;
     }
-    .text-case {
-        max-height: auto;
+    .section-case-text {
+        max-height: none;
     }
 }
 
 /* Alle text binnen een case. */
-.text-case {
+.section-case-text {
     padding: 2em 0 2em 0;
     display: flex;
     height: 100%;
     flex-direction: column;
     min-width: 0;
     overflow: hidden;
-}
-
-.text-case h2 {
-    line-height: 1.15;
-}
-
-.text-case p {
-    line-height: 1.5;
-    margin: 1em 0 1em 0;
-    font-size: var(--font-size-normal-text);
-    @media (min-width: 1000px) {  /* Bij een ander breaking-point gaat de text helaas onder de onderstaande image */
-    p, a, li {
-    font-size: clamp(20px, 3vw, 25px);
-    }} 
+    h2 {
+        line-height: 1.15;
+    }
+    p {
+        line-height: 1.5;
+        margin: 1em 0 1em 0;
+        font-size: var(--font-size-normal-text);
+        @media (min-width: 1000px) {  /* Bij een ander breaking-point gaat de text helaas onder de onderstaande image */
+        p, a, li {
+        font-size: clamp(20px, 3vw, 25px);
+        }} 
+    }
 }
 
 /* Lees verder-knop */
@@ -111,62 +107,64 @@ body {
     font-size: var(--font-size-small-button);
 }
 
-/* Paginering */
-.nav-pages-cases ol {
-  list-style: none;       
-  padding-top: 5em;
-  display: flex;      
-  gap: 8px;  
-  padding-left: 2em;
-  @media (min-width: 770px) {
-    padding-left: 4em;
-    }
-  @media (min-width: 950px) {  
-    padding-left: 6em;
-    }
-  @media (min-width: 1300px){
-    padding-left: 13em;
-    }       
+/* Paginering onderaan de cases pagina */
+.nav-cases-pages {
+  ol {
+    list-style: none;       
+    padding-top: 5em;
+    display: flex;      
+    gap: 8px;  
+    padding-left: 2em;
+    @media (min-width: 770px) {
+        padding-left: 4em;
+        }
+    @media (min-width: 950px) {  
+        padding-left: 6em;
+        }
+    @media (min-width: 1300px){
+        padding-left: 13em;
+        }
+  }      
+  li {
+    margin: 0;
+  }
+  a {
+    display: inline-block;
+    background-color: var(--primary-highlight);      
+    color: white;            
+    padding: 16px 32px;          
+    text-decoration: none;       
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  strong {
+    background-color: var(--secondary-highlight); 
+    color: white;
+    padding: 16px 32px;
+    font-weight: 700;
+    display: inline-block;
+  }
 }
 
-.nav-pages-cases li {
-  margin: 0;
-}
-
-.nav-pages-cases a {
-  display: inline-block;
-  background-color: var(--primary-highlight);      
-  color: white;            
-  padding: 16px 32px;          
-  text-decoration: none;       
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-}
-
-.nav-pages-cases a:hover {
-  background-color: var(--primary-highlight);   
-}
-
-.nav-pages-cases strong {
-  background-color: var(--secondary-highlight); 
-  color: white;
-  padding: 16px 32px;
-  font-weight: 700;
-  display: inline-block;
+.nav-cases-pages a:hover {
+  background: var(--primary-highlight);   
 }
 
 /* ======================= DETAILPAGE CASE ========================= */
-.section-detail-image, .section-detail-header h1, .detail-leestijd, .section-detail-users {
+.section-detail-image, .section-detail-titels h1, .detail-leestijd, .container-users {
     display: flex;
     justify-content: center; 
 }
 
-.section-detail-users {
-    padding-left: 2em;
-    padding-right: 2em;
+.detail-leestijd {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    a {
+       color: var(--primary-highlight);
+    }
 }
 
-section.section-detail-image img {
+.section-detail-image img {
     height: 500px;
     width: 80%;
     object-fit: cover;
@@ -175,7 +173,7 @@ section.section-detail-image img {
     padding-top: 2em;
 }
 
-.section-detail-header h1 {
+.section-detail-titels h1 {
     padding-left: 0.8em;
     @media (min-width: 810px) {
       max-width: 800px;
@@ -193,6 +191,8 @@ section.section-detail-image img {
     padding: 1em 0;
     scroll-padding-left: 0;
     -webkit-overflow-scrolling: touch;
+    padding-left: 2em;
+    padding-right: 2em;
 }
 
 .detail-user-card {
@@ -204,13 +204,12 @@ section.section-detail-image img {
     padding: 1em;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.detail-user-card img {
-    width: 100%;
-    max-width: 100px;
-    border-radius: 50%;
-    margin-bottom: 0.5em;
+    img {
+        width: 100%;
+        max-width: 100px;
+        border-radius: 50%;
+        margin-bottom: 0.5em;
+    }
 }
 
 /* Onderste gedeelte pagina */
@@ -223,24 +222,20 @@ section.section-detail-image img {
     flex-direction: column;
     gap: 1.5em;
     padding: 0em 2em 0em;
-}
-
-.section-detail-content img, video, iframe {
-    width: 100%;
-    display: flex;
-    height: auto;
-}
-
-.section-detail-content p {
-    font-size: var(--font-size-small-button);
-}
-
-.section-detail-content h2 {
-    font-size: 30px; /* NOG EVEN DYNAMISCH MAKEN */
-}
-
-.section-detail-content a {
-    color: var(--primary-highlight);
+    img, video, iframe {
+        width: 100%;
+        display: flex;
+        height: auto;
+    }
+    p {
+        font-size: var(--font-size-small-button);
+    }
+    h2 {
+        font-size: 30px; 
+    }
+    a {
+        color: var(--primary-highlight);
+    }
 }
 
 /* Video kunnen stylen. De originele style uit de JSON wordt overwritten met het nieuwe stuk code. */
