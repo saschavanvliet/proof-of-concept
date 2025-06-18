@@ -257,7 +257,7 @@ div[style="width: 61rem; margin: 0 auto;"] {
   background: #fff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   border-radius: 12px;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: var(--primary-font);
   li {
     list-style: none;
   }
@@ -269,32 +269,41 @@ div[style="width: 61rem; margin: 0 auto;"] {
   li {
     font-weight: 300;
   }
+  label {
+    display: block;
+    margin-bottom: 0.5em;
+    color: #333;
+  }
+  input, textarea {
+    width: 100%;
+    padding: 0.8em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: border-color 0.3s;
+  }
 }
 
-label {
-  display: block;
-  margin-bottom: 0.5em;
-  color: #333;
+.form-naam {
+  li {
+  padding-top: 1em;
+  font-size: 0.9rem;
+  }
 }
 
-input, textarea {
-  width: 100%;
-  padding: 0.8em;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 400;
-  transition: border-color 0.3s;
-}
-
-input:focus, textarea:focus {
+.form-group input:focus, textarea:focus {
   border-color: var(--primary-highlight);
   outline: none;
 }
 
+.form-group span {
+  color: rgb(161, 4, 4);
+}
+
 .contact-submit-button {
   background: var(--primary-highlight);
-  color: #fff;
+  color: var(--primary-background);
   padding: 1em 2em;
   border: none;
   border-radius: 8px;
@@ -304,10 +313,9 @@ input:focus, textarea:focus {
   transition: background 0.3s;
 }
 
-button:hover {
+.contact-submit-button:hover {
   background: var(--secondary-highlight);
 }
-
 
 /* ========================= Footer =========================== */
 
