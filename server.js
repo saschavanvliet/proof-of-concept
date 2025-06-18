@@ -78,9 +78,42 @@ app.get('/cases/case/:slug', async function (request, response) {
     });
 });
 
+// POST 
 app.get('/contact', (request, response) => {
   response.render('contact.liquid');
 });
+
+app.post('/contact', async (req, res) => {
+    const { surname, lastname, email, message } = req.body;
+
+    const directusPayload = {
+      from: `${surname} ${lastname}`,
+      for: email,
+      text: `Bericht: ${message}`
+    };
+
+    try {
+        const response = await fetch('https://fdnd-agency.directus.app/items/avl_messages', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(directusPayload)
+        });
+
+        if (response.ok) {
+            res.send('Bedankt voor je bericht!');
+        } else {
+            const errorData = await response.json();
+            console.error('Directus fout:', errorData);
+            res.status(500).send('Er ging iets mis met het versturen.');
+        }
+    } catch (error) {
+        console.error('Server fout:', error);
+        res.status(500).send('Interne serverfout.');
+    }
+});
+
 
 // 404 pagina live zetten
 app.get('/404', (request, response) => {
