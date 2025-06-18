@@ -9,54 +9,225 @@ body {
   overflow-x: hidden;
 }
 
+main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er ruimte boven elke main komen. */
+  padding-top: 40px;
+}
+
+/* ========================= HEADER ============================== */
+.header-nav {
+  display: flex;
+  flex-wrap: wrap;
+  top: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  background: var(--primary-background);
+  padding: 1em 2em;
+  gap: 15px;
+  z-index: 9999;
+}
+
+/* Logo eerst klein */
+.header-logo img {
+  max-width: 150px;
+  max-height: 50px;
+  height: auto;
+  width: auto;
+  display: block;
+}
+
+/* Navigatielinks binnen de parent li's verticaal standaard */
+.all-nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  li { 
+    position: relative; /* Parent li */
+  }
+  a {
+    text-decoration: none;
+    color: var(--primary-text);
+    font-weight: 600;
+    padding: 8px 5px;
+    display: block;
+  }
+  li ul { /* li's in lu standaard verborgen */
+    display: none;
+    list-style: none;
+    padding-left: 15px;
+    margin-top: 5px;
+  }
+}
+
+.all-nav-links li.open > ul {
+  display: block;
+}
+
+.all-nav-links li ul li a {
+  padding: 8px 15px;
+  color: var(--primary-text);
+  font-weight: 400;
+}
+
+.header-nav > div, .header-nav > a[href="/contact"] {
+  width: 100%;
+  margin: 0;
+}
+
+.header-nav input[type="text"] {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.header-nav input[type="text"]:focus {
+  border-color: var(--secondary-highlight);
+  outline: none;
+}
+
+.zoekbalk {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Contact knop */
+.header-nav > a[href="/contact"] {
+  background: var(--secondary-highlight);
+  color: var(--primary-background);
+  font-weight: 600;
+  padding: 1em 2em;
+  text-decoration: none;
+  white-space: nowrap;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+.header-nav > a[href="/contact"]:hover {
+  background: var(--secondary-hover);
+}
+
+@media (min-width: 768px) {
+  .header-nav {
+    flex-wrap: nowrap;
+    gap: 30px;
+    height: 7em;
+    position: fixed;
+  }
+
+  .header-logo {
+    flex-shrink: 0;
+  }
+
+  .all-nav-links {
+    flex-direction: row;
+    gap: 25px;
+    width: auto;
+    margin-left: 50px;
+  }
+
+  .all-nav-links li ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--primary-background);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 10px 0;
+    min-width: 180px;
+    border-radius: 4px;
+    z-index: 100;
+    display: none;
+  }
+
+  .all-nav-links li:hover > ul {
+    display: block;
+  }
+
+  .header-nav > div {
+    margin-left: auto;
+    margin-right: 20px;
+    width: auto;
+  }
+
+  .header-nav > a[href="/contact"] {
+    width: auto;
+  }
+
+  .header-nav input[type="text"] {
+    width: 180px;
+  }
+}
+
+/* ======================= INDEX PAGINA ========================== */
+.main-index {
+  font-size: 2rem;
+  text-align: center;
+  background: var(--secondary-background);
+  color: var(--primary-text);
+  height: 70vh;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
 /* ======================= STYLING OVERZICHTSPAGINA CASES =========================== */
 /* Section van alle cases bij elkaar zonder h1. Dus niet per article. */
 .section-all-cases {
-    padding: 2em;
-    @media (min-width: 770px) { /* Groter dan mobiel */
-       padding: 4em 4em 0 4em;
-    }
-    @media (min-width: 950px) {  /* Tablet: Relatief snel een nieuw breakingpoint toegevoegd, maar anders was er te veel padding rond dit punt. */
-        padding: 4em 6em 0 6em;
-    }
-    @media (min-width: 1300px) { /* Desktop */
-       padding: 4em 13em 0 13em;
-    }
-    h1 {
-    line-height: 1.15;
-    }
+  padding: 2em;
+  @media (min-width: 770px) { /* Groter dan mobiel */
+      padding: 4em 4em 0 4em;
+  }
+  @media (min-width: 950px) {  /* Tablet: Relatief snel een nieuw breakingpoint toegevoegd, maar anders was er te veel padding rond dit punt. */
+      padding: 4em 6em 0 6em;
+  }
+  @media (min-width: 1300px) { /* Desktop */
+      padding: 4em 13em 0 13em;
+  }
+  h1 {
+  line-height: 1.15;
+  }
 }
 
 /* Styling images */
 .img-case {
     overflow: hidden;
     img {
-        width: 100%;
-        max-height: 400px;
-        padding-top: 2em;
-        padding-bottom: 2em;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        aspect-ratio: 1;
-        @media (min-width: 750px) { /* Desktop */
-            max-height: 470px;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
+      width: 100%;
+      max-height: 400px;
+      padding-top: 2em;
+      padding-bottom: 2em;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      aspect-ratio: 1;
+      @media (min-width: 750px) { /* Desktop */
+          max-height: 470px;
+          padding-top: 0;
+          padding-bottom: 0;
+      }
     }
 }
 
 /* Layout styling met grid */
 .container-cases {
-    margin-top: 2em;
+  margin-top: 2em;
 }
 
 .grid-cases {
-    display: grid;
-    @media (min-width: 750px) {
-        grid-template-columns: 1fr 1fr;
-    }
+  display: grid;
+  @media (min-width: 750px) {
+      grid-template-columns: 1fr 1fr;
+  }
 }
   
 /* Bij een media query van minimaal 750px verandert de layout zodat de sections niet meer vlak onder elkaar staan. */
@@ -331,8 +502,8 @@ div[style="width: 61rem; margin: 0 auto;"] {
   z-index: 1000;
 }
 
-
 /* ========================= Footer =========================== */
+
 
 
 /* ======================= 404-PAGINA ======================= */
@@ -342,15 +513,15 @@ div[style="width: 61rem; margin: 0 auto;"] {
 }
 
 .main-errorpage {
-    flex-direction: column; 
-    text-align: center;
-    padding-bottom: 3em;
-    padding-top: 3em;
+  flex-direction: column; 
+  text-align: center;
+  padding-bottom: 3em;
+  padding-top: 3em;
 }
 
 .image-errorpage {
-    margin-top: 2em;
-    text-decoration: underline; 
+  margin-top: 2em;
+  text-decoration: underline; 
 }
 
 .text-errorpage a {
@@ -359,29 +530,29 @@ div[style="width: 61rem; margin: 0 auto;"] {
 
 @media (min-width: 1100px) {
 .text-errorpage {
-    order: 2;
+  order: 2;
 }
 .image-errorpage {
-    order: 1;
+  order: 1;
 }
 .main-errorpage {
-    display: flex;
-    flex-direction: row; 
-    align-items: center; 
-    justify-content: center;
+  display: flex;
+  flex-direction: row; 
+  align-items: center; 
+  justify-content: center;
 }
 .image-errorpage img, .text-errorpage img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 .text-errorpage {
-    flex-basis: 60%;
+  flex-basis: 60%;
 }
 .image-errorpage {
-    flex-basis: 40%;
+  flex-basis: 40%;
 }
 .image-errorpage img {
-    height: 850px;
-    object-fit: cover;
-    display: block; 
+  height: 850px;
+  object-fit: cover;
+  display: block; 
 }}
