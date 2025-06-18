@@ -1,6 +1,11 @@
 {% render 'partials/head.liquid', title: 'contact' %}
 
 <main class="main-contact">
+
+    {% if message %}
+        <div class="contact-popup">{{ message }}</div>
+    {% endif %}
+
     <form class="contact-form" action="/contact" method="POST">
             <h3>Stuur ons een berichtje!</h3>
             <ul class="contact-form-body">

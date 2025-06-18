@@ -317,6 +317,21 @@ div[style="width: 61rem; margin: 0 auto;"] {
   background: var(--secondary-highlight);
 }
 
+.contact-popup {
+  font-size: 1.5em;
+  font-weight: 400; 
+  padding: 1em;
+  background: var(--secondary-background);
+  color: var(--primary-highlight);
+  border: 1px var(--secondary-background);
+  border-radius: 5px;
+  text-align: center;
+  opacity: 1;
+  transition: opacity 1s ease; 
+  z-index: 1000;
+}
+
+
 /* ========================= Footer =========================== */
 
 

@@ -86,25 +86,25 @@ app.get('/contact', (request, response) => {
 app.post('/contact', async (req, res) => {
     const { surname, lastname, email, message } = req.body;
 
-    const directusPayload = {
-      from: `${surname} ${lastname}`,
+    const directusInfo = {
+      from: surname, lastname,
       for: email,
       text: `Bericht: ${message}`
     };
 
     try {
-        const response = await fetch('https://fdnd-agency.directus.app/items/avl_messages', {
+        const directusInfoResponse = await fetch('https://fdnd-agency.directus.app/items/avl_messages', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(directusPayload)
+            body: JSON.stringify(directusInfo) // Nu wordt er van de invoervelden uit directusInfo een string gemaakt om deze via http POST request te versturen. Anders wordt de data niet begrepen omdat het een object is.
         });
 
-        if (response.ok) {
-            res.send('Bedankt voor je bericht!');
-        } else {
-            const errorData = await response.json();
+        if (directusInfoResponse.ok) { // Als de POST werkt wordt je teruggestuurd naar de contactpagina
+            res.render('contact.liquid', { message: 'Bedankt voor je bericht!' });
+        } else {  // Als hij niet werkt komt er een alternatieve foutmelding
+            const errorData = await directusInfoResponse.json(); 
             console.error('Directus fout:', errorData);
             res.status(500).send('Er ging iets mis met het versturen.');
         }
