@@ -5,8 +5,8 @@
   {% comment %} Breadcrumb {% endcomment %}
   <nav class="nav-detail-breadcrumbs" aria-label="Breadcrumb">
     <ol class="list-detail-breadcrumbs">
-      <li><a href="/">{{ case.yoast_head_json.schema["@graph"][2].itemListElement[0].name }}</a></li>
-      <li><a href="/cases">{{ case.yoast_head_json.schema["@graph"][2].itemListElement[1].name }}</a></li>
+      <li><a href="/">{{ case.yoast_head_json.schema["@graph"][2].itemListElement[0].name }}</a></li>>>
+      <li><a href="/cases">{{ case.yoast_head_json.schema["@graph"][2].itemListElement[1].name }}</a></li>>>
       <li aria-current="page">{{ case.yoast_head_json.schema["@graph"][2].itemListElement[2].name }}</li>
     </ol>
   </nav>
@@ -56,7 +56,7 @@
   {% comment %} Contact opnemen met de projectleider {% endcomment %}
   <section class="section-detail-meerweten">
     <p>Meer weten over dit project? Neem contact op met de projectleider:</p>
-    <div class="contactpersoon">
+    <div class="detail-contactpersoon">
       <a href="{{ projectleider.link }}">
         <div>
           <img src="{{ projectleider.avatar_urls.96 }}" alt="{{ projectleider.name }}"/>
