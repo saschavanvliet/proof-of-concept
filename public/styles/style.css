@@ -534,13 +534,83 @@ div[style="width: 61rem; margin: 0 auto;"] {
 }
 
 /* ========================= Footer =========================== */
+.footer-meaning {
+   padding: 2em 2em
+}
 
-        form {
-            position: relative;
-                max-width: 100%;
-                flex-basis: 0;
-                flex-grow: 1;
+footer li {
+  list-style: none;
+}
 
+.footer-label-vier {
+  position: relative;
+  background: #e5e5e5;
+  width: 100%;
+  .footer-wrapper {
+    padding: 0 2em 3em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+  }
+}
+
+.footer-label-vier::before {
+  background: linear-gradient(-25deg, #e5e5e5 16px, #e5e5e5 16px, #e5e5e5 16px, transparent 0),
+    linear-gradient(25deg, #e5e5e5 16px, transparent 0);
+  background-position: left top;
+  background-repeat: repeat-x;
+  background-size: 35px 35px;
+  content: "";
+  display: block;
+  height: 32px;
+  width: 100%;
+  padding: 0;
+  position: relative;
+  top: -32px;
+  left: 0;
+}
+
+.footer-label-vier .footer-adress {
+  display: flex;
+  flex-direction: column;
+  gap: .6em;
+
+  h3 {
+      font-size: 30px;
+  }
+
+  a {
+      text-decoration: underline;
+  }
+}
+
+.footer-diensten, .footer-informatie {
+  display: flex;
+  flex-direction: column;
+  gap: .6em;
+  h3 {
+      font-size: 30px;
+  }
+  .footer-cookies {
+    padding-top: 1.5em;
+    text-decoration: underline;
+  }
+  a {
+    transition: .2s ease-in-out;
+  }
+  a:hover {
+    transition: .2s ease-in-out;
+    background: var(--primary-hover);
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .footer-label-vier .footer-wrapper {
+    flex-direction: row;
+    padding: 3em 4em 3em;
+    justify-content: space-between;
+    }
+}
 
 /* ======================= 404-PAGINA ======================= */
 .image-errorpage img {
