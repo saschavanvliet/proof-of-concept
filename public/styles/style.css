@@ -356,6 +356,15 @@ main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er
   margin: 0;
 }
 
+.list-detail-breadcrumbs li::after {
+  content: "››";
+  margin-left: 0.5em;
+}
+
+.list-detail-breadcrumbs li:last-child::after {  /* Er komt geen tekentje na de laatste li */
+  content: "";
+}
+
 .section-detail-image, .section-detail-titels h1, .detail-leestijd, .container-users {
   display: flex;
   justify-content: center; 

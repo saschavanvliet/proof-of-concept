@@ -5,12 +5,12 @@
   {% comment %} Breadcrumb {% endcomment %}
   <nav class="nav-detail-breadcrumbs" aria-label="Breadcrumb">
     <ol class="list-detail-breadcrumbs">
-      <li><a href="/">{{ case.yoast_head_json.schema["@graph"][2].itemListElement[0].name }}</a></li>>>
-      <li><a href="/cases">{{ case.yoast_head_json.schema["@graph"][2].itemListElement[1].name }}</a></li>>>
+      <li><a href="/">{{ case.yoast_head_json.schema["@graph"][2].itemListElement[0].name }}</a></li>
+      <li><a href="/cases">{{ case.yoast_head_json.schema["@graph"][2].itemListElement[1].name }}</a></li>
       <li aria-current="page">{{ case.yoast_head_json.schema["@graph"][2].itemListElement[2].name }}</li>
     </ol>
   </nav>
-  
+
   {% comment %} Image van het project waar op geklikt is {% endcomment %}
   <section class="section-detail-image">
     <img src="{{ case.yoast_head_json.og_image[0].url }}" alt="{{ case.title.rendered }}" width="800" height="auto">
