@@ -29,7 +29,13 @@
   <section class="container-users">
     {% comment %} Projectleider {% endcomment %}
     <div class="detail-user-card">
-      <img src="{{ projectleider.avatar_urls.96 }}" alt="{{ projectleider.name }}"/>
+      <figure>
+        <picture>
+          <source media="(min-width: 650px)" srcset="{{ projectleider.avatar_urls.96 }}">
+          <source media="(min-width: 465px)" srcset="{{ projectleider.avatar_urls.48 }}">
+          <img src="{{ projectleider.avatar_urls.24 }}" alt="{{ projectleider.name }}">
+        </picture>
+      </figure>
       <div>
         <h3>{{ projectleider.acf.user_data.profile_title }}</h3>
         <p>{{ projectleider.acf.user_data.role }}</p>
@@ -39,7 +45,13 @@
     {% comment %} Teamleden {% endcomment %}
     {% for user in teamleden %}
       <div class="detail-user-card">
-        <img src="{{ user.avatar_urls.96 }}" alt="{{ user.name }}" />
+        <figure>
+          <picture>
+            <source media="(min-width: 650px)" srcset="{{ user.avatar_urls.96 }}">
+            <source media="(min-width: 465px)" srcset="{{ user.avatar_urls.48 }}">
+            <img src="{{ user.avatar_urls.24 }}" alt="{{ user.name }}">
+          </picture>
+        </figure>
         <div>
           <h3>{{ user.acf.user_data.profile_title }}</h3>
           <p>{{ user.acf.user_data.role }}</p>
