@@ -449,6 +449,10 @@ div[style="width: 61rem; margin: 0 auto;"] {
   margin: 0 !important;
 }
 
+.detail-contactpersoon img {
+  border-radius: 45px;
+}
+
 
 
 /* ========================== Contact POST ================================ */
@@ -535,7 +539,16 @@ div[style="width: 61rem; margin: 0 auto;"] {
 
 /* ========================= Footer =========================== */
 .footer-meaning {
-   padding: 2em 2em
+  padding: 3em 4em;
+  a {
+    background: var(--primary-highlight);
+    color: var(--primary-background);
+    padding: 1em;
+    font-weight: 400;
+  }
+  a:hover {
+    background: var(--primary-hover);
+  }
 }
 
 footer li {
@@ -574,11 +587,9 @@ footer li {
   display: flex;
   flex-direction: column;
   gap: .6em;
-
   h3 {
       font-size: 30px;
   }
-
   a {
       text-decoration: underline;
   }
