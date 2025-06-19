@@ -136,6 +136,44 @@ main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er
   background: var(--secondary-hover);
 }
 
+.button-contact-submit {
+  position: relative;
+  background-color: var(--secondary-highlight);
+  color: white;
+  padding: 0.8em 2em;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-contact-submit.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.button-contact-submit.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid white;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
 @media (min-width: 768px) {
   .header-nav {
     flex-wrap: nowrap;
@@ -507,7 +545,7 @@ div[style="width: 61rem; margin: 0 auto;"] {
   color: rgb(161, 4, 4);
 }
 
-.contact-submit-button {
+.button-contact-submit {
   background: var(--primary-highlight);
   color: var(--primary-background);
   padding: 1em 2em;
@@ -519,7 +557,7 @@ div[style="width: 61rem; margin: 0 auto;"] {
   transition: background 0.3s;
 }
 
-.contact-submit-button:hover {
+.button-contact-submit:hover {
   background: var(--secondary-highlight);
 }
 

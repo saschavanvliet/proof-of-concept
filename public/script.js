@@ -1,4 +1,5 @@
-window.addEventListener('DOMContentLoaded', () => {
+// Animatie popup verdwijnen na 10 seconden - feedback geslaagde POST
+window.addEventListener('DOMContentLoaded', function () {
     const popup = document.querySelector('.contact-popup');
     if (popup) {
       setTimeout(() => {
@@ -8,4 +9,12 @@ window.addEventListener('DOMContentLoaded', () => {
         }, 1000); 
       }, 10000);
     }
+  });
+
+// Loading state gemaakt voor button op de POST
+const form = document.querySelector('.contact-form');
+const submitButton = document.querySelector('.button-contact-submit');
+
+  form.addEventListener('submit', function () {     // Er wordt op het formulier een event toegevoegd (submit) en wanneer iemand op versturen klikt, wordt de loading class toegevoegd.
+    submitButton.classList.add('loading');
   });
