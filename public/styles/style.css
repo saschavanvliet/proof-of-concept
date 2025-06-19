@@ -329,6 +329,14 @@ main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er
 }
 
 /* ======================= DETAILPAGE CASE ========================= */
+.list-detail-breadcrumbs {
+  list-style: none;
+  display: flex;
+  gap: 10px; 
+  padding: 0 0 0 2em;
+  margin: 0;
+}
+
 .section-detail-image, .section-detail-titels h1, .detail-leestijd, .container-users {
   display: flex;
   justify-content: center; 
@@ -508,6 +516,11 @@ div[style="width: 61rem; margin: 0 auto;"] {
 
 /* ========================= Footer =========================== */
 
+        form {
+            position: relative;
+                max-width: 100%;
+                flex-basis: 0;
+                flex-grow: 1;
 
 
 /* ======================= 404-PAGINA ======================= */
