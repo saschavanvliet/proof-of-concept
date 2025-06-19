@@ -1,8 +1,8 @@
 /* ======================= ALGEMENE STYLING GEHELE PAGINA ========================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -10,7 +10,7 @@ body {
 }
 
 main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er ruimte boven elke main komen. */
-  margin-top: 150px;
+  margin-top: 130px;
 }
 
 /* ========================= HEADER ============================== */
@@ -36,6 +36,7 @@ main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er
   display: block;
 }
 
+
 /* Navigatielinks binnen de parent li's verticaal standaard */
 .all-nav-links {
   list-style: none;
@@ -49,11 +50,31 @@ main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er
     position: relative; /* Parent li */
   }
   a {
+    position: relative;
+    z-index: 1; /* zet de tekst altijd bovenop */
     text-decoration: none;
     color: var(--primary-text);
     font-weight: 600;
     padding: 8px 5px;
     display: block;
+    transition: color 0.4s ease;
+    overflow: hidden;
+  }
+  a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-text);
+    transition: left 0.4s ease;
+  }
+  a:hover::before {
+    left: 0;
+  }
+  a:hover {
+    color: white;
   }
   li ul { /* li's in lu standaard verborgen */
     display: none;
@@ -61,16 +82,14 @@ main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er
     padding-left: 15px;
     margin-top: 5px;
   }
-}
-
-.all-nav-links li.open > ul {
-  display: block;
-}
-
-.all-nav-links li ul li a {
-  padding: 8px 15px;
-  color: var(--primary-text);
-  font-weight: 400;
+  li.open > ul {
+    display: block;
+  }
+  li ul li a {
+    padding: 8px 15px;
+    color: var(--primary-text);
+    font-weight: 400;
+  }
 }
 
 .header-nav > div, .header-nav > a[href="/contact"] {
