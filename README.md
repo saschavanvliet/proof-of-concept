@@ -154,7 +154,7 @@ NodeJs, Liquid templating
   
 ## Bronnen
 - https://www.w3schools.com/html/html_favicon.asp
-- 
+- https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13
 
 ## Licentie
 
