@@ -2,8 +2,12 @@ Ontwerp en maak een data driven online concept voor een opdrachtgever
 
 De instructies voor deze opdracht staan in: [docs/INSTRUCTIONS.md](https://github.com/fdnd-task/proof-of-concept/blob/main/docs/INSTRUCTIONS.md)
 
-# Titel
-<!-- Geef je project een titel en schrijf in één zin wat het is -->
+# Een website voor Label Vier
+Label Vier is een digitaal bureau uit Amersfoort dat gespecialiseerd is in het ontwerpen en ontwikkelen van toegankelijke websites, webshops en apps op maat. 
+Met een gestructureerde aanpak in vier fasen – onderzoeken, ontwerpen, ontwikkelen en optimaliseren – 
+zet Label Vier gebruiksvriendelijkheid en kwaliteit centraal. 
+Hun team combineert strategisch inzicht met technische expertise en realiseert digitale oplossingen die niet alleen visueel sterk zijn, 
+maar ook voldoen aan de nieuwste toegankelijkheidsrichtlijnen – zodat iedereen optimaal gebruik kan maken van het eindproduct.
 
 ## Inhoudsopgave
 
