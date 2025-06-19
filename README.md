@@ -153,8 +153,9 @@ NodeJs, Liquid templating
 - Je hebt client-side scripting technieken gebruikt voor een 'Pleasurable User Interface' ✅
   
 ## Bronnen
-- https://www.w3schools.com/html/html_favicon.asp
-- https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13
+- [Favicon](https://www.w3schools.com/html/html_favicon.asp)
+- [Conventional commits](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13)
+- [Srcset](https://www.w3schools.com/TAgs/att_source_srcset.asp)
 
 ## Licentie
 
