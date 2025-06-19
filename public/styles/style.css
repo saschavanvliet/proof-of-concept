@@ -10,7 +10,7 @@ body {
 }
 
 main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er ruimte boven elke main komen. */
-  padding-top: 40px;
+  margin-top: 150px;
 }
 
 /* ========================= HEADER ============================== */
@@ -172,12 +172,16 @@ main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er
 .main-index {
   font-size: 2rem;
   text-align: center;
-  background: var(--secondary-background);
-  color: var(--primary-text);
-  height: 70vh;
+  color: var(--primary-background);
+  height: 60vh;
   display: flex;
   justify-content: center; 
   align-items: center;
+  a {
+    background: var(--primary-highlight);
+    padding: 1em 2em;
+    border-radius: 8px;
+  }
 }
 
 /* ======================= STYLING OVERZICHTSPAGINA CASES =========================== */
@@ -251,34 +255,34 @@ main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er
 
 /* Alle text binnen een case. */
 .section-case-text {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    min-width: 0;
-    overflow: hidden;
-    h2 {
-        line-height: 1.15;
-    }
-    p {
-        line-height: 1.5;
-        margin: 1em 0 1em 0;
-        font-size: var(--font-size-normal-text);
-        @media (min-width: 1000px) {  /* Bij een ander breaking-point gaat de text helaas onder de onderstaande image */
-        p, a, li {
-        font-size: clamp(20px, 3vw, 25px);
-        }} 
-    }
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  h2 {
+      line-height: 1.15;
+  }
+  p {
+      line-height: 1.5;
+      margin: 1em 0 1em 0;
+      font-size: var(--font-size-normal-text);
+      @media (min-width: 1000px) {  /* Bij een ander breaking-point gaat de text helaas onder de onderstaande image */
+      p, a, li {
+      font-size: clamp(20px, 3vw, 25px);
+      }} 
+  }
 }
 
 /* Lees verder-knop */
 .lees-verder-case {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    min-height: initial;
-    line-height: 1;
-    font-weight: bold;
-    font-size: var(--font-size-small-button);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  min-height: initial;
+  line-height: 1;
+  font-weight: bold;
+  font-size: var(--font-size-small-button);
 }
 
 /* Paginering onderaan de cases pagina */
@@ -326,96 +330,96 @@ main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er
 
 /* ======================= DETAILPAGE CASE ========================= */
 .section-detail-image, .section-detail-titels h1, .detail-leestijd, .container-users {
-    display: flex;
-    justify-content: center; 
+  display: flex;
+  justify-content: center; 
 }
 
 .detail-leestijd {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    a {
-       color: var(--primary-highlight);
-    }
+  padding-top: 1em;
+  padding-bottom: 1em;
+  a {
+      color: var(--primary-highlight);
+  }
 }
 
 .section-detail-image img {
-    height: 500px;
-    width: 80%;
-    object-fit: cover;
-    display: block;
-    padding-bottom: 2em;
-    padding-top: 2em;
+  height: 500px;
+  width: 80%;
+  object-fit: cover;
+  display: block;
+  padding-bottom: 2em;
+  padding-top: 2em;
 }
 
 .section-detail-titels h1 {
-    padding-left: 0.8em;
-    @media (min-width: 810px) {
-      max-width: 800px;
-      margin: 0 auto;
-      padding-left: 0.5em;
-    }
+  padding-left: 0.8em;
+  @media (min-width: 810px) {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 0.5em;
+  }
 }
 
 .container-users {
-    display: flex;
-    gap: 1em;
-    margin: 0 auto;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 1em 0;
-    scroll-padding-left: 0;
-    -webkit-overflow-scrolling: touch;
-    padding-left: 2em;
-    padding-right: 2em;
+  display: flex;
+  gap: 1em;
+  margin: 0 auto;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 1em 0;
+  scroll-padding-left: 0;
+  -webkit-overflow-scrolling: touch;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 .detail-user-card {
-    min-width: 240px;
-    flex: 0 0 auto;
-    scroll-snap-align: start;
-    background: #f9f9f9;
-    border-radius: 8px;
-    padding: 1em;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    img {
-        width: 100%;
-        max-width: 100px;
-        border-radius: 50%;
-        margin-bottom: 0.5em;
-    }
+  min-width: 240px;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 1em;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  img {
+      width: 100%;
+      max-width: 100px;
+      border-radius: 50%;
+      margin-bottom: 0.5em;
+  }
 }
 
 /* Onderste gedeelte pagina */
 .section-detail-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2em;
-    justify-content: center; 
-    display: flex;
-    flex-direction: column;
-    gap: 1.5em;
-    padding: 0em 2em 0em;
-    img, video, iframe {
-        width: 100%;
-        display: flex;
-        height: auto;
-    }
-    p {
-        font-size: var(--font-size-small-button);
-    }
-    h2 {
-        font-size: 30px; 
-    }
-    a {
-        color: var(--primary-highlight);
-    }
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2em;
+  justify-content: center; 
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding: 0em 2em 0em;
+  img, video, iframe {
+      width: 100%;
+      display: flex;
+      height: auto;
+  }
+  p {
+      font-size: var(--font-size-small-button);
+  }
+  h2 {
+      font-size: 30px; 
+  }
+  a {
+      color: var(--primary-highlight);
+  }
 }
 
 /* Video kunnen stylen. De originele style uit de JSON wordt overwritten met het nieuwe stuk code. */
 div[style="width: 61rem; margin: 0 auto;"] {
-    width: 100% !important;
-    margin: 0 !important;
+  width: 100% !important;
+  margin: 0 !important;
 }
 
 
