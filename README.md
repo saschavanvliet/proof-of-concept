@@ -129,19 +129,32 @@ Dit project wordt uitgevoerd in opdracht van Label Vier. Het staat los van ander
 
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
-
-## DoD's beschrijven (NIET AF)
-- Je hebt een website ontworpen en gemaakt voor een opdrachtgever met NodeJS, Express, Liquid en een REST API
-- Je website is online gepubliceerd
-- Je hebt het briefing-debriefing proces doorlopen met de opdrachtgever en je vorderingen gepresenteerd tijdens de sprint review
-- Jouw gebruikers kunnen iets achterlaten of toevoegen op jouw website
-- Je hebt met client-side scripting de user experience van je website verbeterd
-- Je hebt client-side scripting technieken gebruikt voor een 'Pleasurable User Interface'
+Html:
+CSS:
+- Consistente benaming waarbij het element als eerste genoemd wordt, daarna de pagina en daarna de functie.
+Een voorbeeld is: section-detail-users.
+- Juiste semantiek en volgorde. De volgorde van de css komt overeen met de respectievelijke volgorde van de HTML.
+- DRY coding. Niet te veel dubbele code schrijven. Css nesting is hier erg handig voor. Tijdens het refactoren is hier meer gebruik van gemaakt
+voor overzichtelijkere code. De media queries zijn ook zo veel mogelijk genest.
+- Kebab-casing consistent overal gebruikt in css.
+-
+JavaScript:
+NodeJs, Liquid templating
 
 ## Installatie
 <!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
 
+## Definitions of Done
+- Je hebt een website ontworpen en gemaakt voor een opdrachtgever met NodeJS, Express, Liquid en een REST API ✅
+- Je website is online gepubliceerd ✅
+- Je hebt het briefing-debriefing proces doorlopen met de opdrachtgever en je vorderingen gepresenteerd tijdens de sprint review ✅
+- Jouw gebruikers kunnen iets achterlaten of toevoegen op jouw website ✅
+- Je hebt met client-side scripting de user experience van je website verbeterd ✅
+- Je hebt client-side scripting technieken gebruikt voor een 'Pleasurable User Interface' ✅
+  
 ## Bronnen
+- https://www.w3schools.com/html/html_favicon.asp
+- 
 
 ## Licentie
 
