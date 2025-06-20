@@ -458,8 +458,10 @@ div[style="width: 61rem; margin: 0 auto;"] {
   margin: 0 !important;
 }
 
-.detail-contactpersoon img {
+.detail-contactpersoon {
+  picture img {
   border-radius: 45px;
+  }
 }
 
 

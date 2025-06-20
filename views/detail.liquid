@@ -71,13 +71,19 @@
     <div class="detail-contactpersoon">
       <a href="{{ projectleider.link }}">
         <div>
-          <img src="{{ projectleider.avatar_urls.96 }}" alt="{{ projectleider.name }}"/>
+          <figure>
+            <picture>
+              <source media="(min-width: 650px)" srcset="{{ projectleider.avatar_urls.96 }}">
+              <source media="(min-width: 465px)" srcset="{{ projectleider.avatar_urls.48 }}">
+              <img src="{{ projectleider.avatar_urls.24 }}" alt="{{ projectleider.name }}">
+            </picture>
+          </figure>
         </div>
+        </a>
         <div>
           <p><strong>{{ projectleider.name }}</strong>, projectleider</p>
           <a href="mailto:{{ projectleider.acf.case_projectleider.user_email }}">Stuur hier je mail{{ projectleider.acf.case_projectleider.user_email }}</a>
         </div>
-      </a>
     </div>
   </section>
 
