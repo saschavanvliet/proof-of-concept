@@ -25,6 +25,7 @@ main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er
   padding: 1em 2em;
   gap: 15px;
   z-index: 9999;
+  transition: 0.3s;
 }
 
 .header-nav.scrolled {
