@@ -596,7 +596,10 @@ div[style="width: 61rem; margin: 0 auto;"] {
   }
   a:hover {
     background: var(--primary-hover);
-  }
+    color: var(--primary-text);
+    border: 1px solid var(--primary-text);
+}
+
 }
 
 footer li {
