@@ -156,6 +156,7 @@ NodeJs, Liquid templating
 - [Favicon](https://www.w3schools.com/html/html_favicon.asp)
 - [Conventional commits](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13)
 - [Srcset](https://www.w3schools.com/TAgs/att_source_srcset.asp)
+- [CLS - Layout Shift](https://web.dev/articles/optimize-cls?utm_source=lighthouse&utm_medium=devtools)
 
 ## Licentie
 
