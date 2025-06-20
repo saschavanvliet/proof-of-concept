@@ -41,7 +41,7 @@
         </picture>
       </figure>
       <div>
-        <h3>{{ projectleider.acf.user_data.profile_title }}</h3>
+        <h2>{{ projectleider.acf.user_data.profile_title }}</h2>
         <p>{{ projectleider.acf.user_data.role }}</p>
       </div>
     </div>
@@ -57,7 +57,7 @@
           </picture>
         </figure>
         <div>
-          <h3>{{ user.acf.user_data.profile_title }}</h3>
+          <h2>{{ user.acf.user_data.profile_title }}</h2>
           <p>{{ user.acf.user_data.role }}</p>
         </div>
       </div>
@@ -93,7 +93,7 @@
 
   {% comment %} Op social media delen {% endcomment %}
   <section class="section-detail-delen">
-    <h3><strong>Deel</strong> dit blogbericht via</h3>
+    <h2><strong>Deel</strong> dit blogbericht via</h2>
     <ul class="detail-socials">
       <li><a href="https://twitter.com/intent/tweet?text={{ case.title.rendered | url_encode }}&url={{ case.link | url_encode }}&via=LabelVier" target="_blank" rel="noopener noreferrer"><img src="" alt="Deel op Twitter" width="15" height="15"/></a></li>
       <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ case.link | url_encode }}" target="_blank" rel="noopener noreferrer"><img src="" alt="Deel op Facebook" width="15" height="15"/></a></li>
