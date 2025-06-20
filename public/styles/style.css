@@ -56,7 +56,7 @@ main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er
   }
   a {
     position: relative;
-    z-index: 1; /* zet de tekst altijd bovenop */
+    z-index: 1;
     text-decoration: none;
     color: var(--primary-text);
     font-weight: 600;
@@ -73,10 +73,12 @@ main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er
     width: 100%;
     height: 100%;
     background: var(--primary-text);
+    color: white;
     transition: left 0.4s ease;
   }
   a:hover::before {
     left: 0;
+    z-index: -1;
   }
   a:hover {
     color: white;
@@ -127,6 +129,8 @@ main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er
 
 /* Contact knop */
 .header-nav > a[href="/contact"] {
+.header-nav {
+  .header-contact-link {
   background: var(--secondary-highlight);
   color: var(--primary-background);
   font-weight: 600;
@@ -135,9 +139,10 @@ main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er
   white-space: nowrap;
   text-align: center;
   transition: background 0.3s;
+  }
 }
 
-.header-nav > a[href="/contact"]:hover {
+.header-contact-link:hover {
   background: var(--secondary-hover);
 }
 
@@ -525,6 +530,7 @@ div[style="width: 61rem; margin: 0 auto;"] {
 
 .button-contact-submit {
   background: var(--primary-highlight);
+  position: relative;
   color: var(--primary-background);
   padding: 1em 2em;
   border: none;
