@@ -19,13 +19,14 @@ const submitButton = document.querySelector('.button-contact-submit');
     submitButton.classList.add('loading');
   });
 
-// Schaduw komt tevoorschijnt als je scrollt
-const header = document.querySelector('.header-nav');
+document.addEventListener('DOMContentLoaded', function() {
+  const header = document.querySelector('.header-nav');
 
-window.addEventListener('scroll', function() {
-  if (window.scrollY > 0) {             // Als de header niet verandert op de y-as, komt er geen schaduw. Als de header groter wordt dan nul, dus je scrollt, dan komt de scrolled css tevoorschijn.
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 0) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
 });

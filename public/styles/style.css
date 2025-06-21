@@ -9,8 +9,8 @@ body {
   overflow-x: hidden;
 }
 
-main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er ruimte boven elke main komen. */
-  margin-top: 130px;
+main {
+  margin-top: 130px; /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er ruimte boven elke main komen. */
 }
 
 /* ========================= HEADER ============================== */
@@ -38,7 +38,6 @@ main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er
   width: auto;
   display: block;
 }
-
 
 /* Navigatielinks binnen de parent li's verticaal standaard */
 .all-nav-links {
@@ -126,7 +125,6 @@ main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er
 }
 
 /* Contact knop */
-.header-nav > a[href="/contact"] {
 .header-nav {
   .header-contact-link {
   background: var(--secondary-highlight);
@@ -567,7 +565,6 @@ div[style="width: 61rem; margin: 0 auto;"] {
     transform: rotate(360deg);
   }
 }
-
 
 .contact-popup {
   font-size: 1.5em;
