@@ -34,8 +34,6 @@ main { /* De nav verdwijnt door 'fixed' uit de normale semantiek. Daarom moet er
 
 /* Logo eerst klein */
 .header-logo img {
-  max-width: 150px;
-  max-height: 50px;
   height: auto;
   width: auto;
   display: block;
