@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const header = document.querySelector('.header-nav');
 
   window.addEventListener('scroll', function() {
-    if (window.scrollY > 0) {
+    if (window.scrollY > 0) {      // ------> Feature detection
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');

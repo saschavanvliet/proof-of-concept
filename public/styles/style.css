@@ -229,23 +229,26 @@ main {
 
 /* Styling images */
 .img-case {
-    overflow: hidden;
-    img {
-      width: 100%;
-      max-height: 400px;
-      padding-top: 2em;
-      padding-bottom: 2em;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+  overflow: hidden;
+  img {
+    width: 100%;
+    max-height: 400px;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    @supports (aspect-ratio: 1) {
       aspect-ratio: 1;
-      @media (min-width: 750px) { /* Desktop */
-          max-height: 470px;
-          padding-top: 0;
-          padding-bottom: 0;
-      }
     }
+    @media (min-width: 750px) { /* Desktop */
+      max-height: 470px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
 }
+
 
 /* Layout styling met grid */
 .container-cases {
